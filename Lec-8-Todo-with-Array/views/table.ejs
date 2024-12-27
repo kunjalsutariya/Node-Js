@@ -94,14 +94,18 @@ a:hover {
                 <td>Srno</td>
                 <td>Name</td>
                 <td>Phone</td>
+                <td>Delete</td>
             </tr>
         </thead>
         <tbody>
             <% record.map((val, i) => { %>
                 <tr>
-                    <td><%= ++i %></td>
+                    <td><%= val.id %></td>
                     <td><%= val.name %></td>
                     <td><%= val.phone %></td>
+                    <td >
+                        <a href="/deleteuser?deleteId=<%= val.id %>"><button>Delete</button></a>
+                    </td>
                 </tr>
             <% }) %>
         </tbody>
