@@ -20,7 +20,7 @@ app.get('/add', (req, res) => {
 app.post('/adduser', (req, res) => {
     const { userphone, username } = req.body;
     let obj = {
-        id:Math.floor(Math.random()*1000000),
+        id: Math.floor(Math.random() * 1000000),
         name: username,
         phone: userphone
     }
@@ -34,6 +34,28 @@ app.get('/deleteuser', (req, res) => {
     let deletedata = record.filter(val => val.id != id);
     record = deletedata;
     return res.redirect('/');
+})
+app.get('/edituser', (req, res) => {
+    let id = req.query.id;
+    let single = record.find(val => val.id == id);
+    return res.render('edit', {
+        single
+    });
+})
+app.post('/updateuser', (req, res) => {
+    const { editid, username, userphone } = req.body;
+    let up = record.map((val) => {
+        if (val.id == editid) {
+            val.name = username
+            val.phone = userphone
+        }
+        return val;
+    })
+    record = up;
+    console.log("user successfully update");
+    return res.redirect('/');
+    
+   
 })
 app.listen(port, (err) => {
     if (err) {
