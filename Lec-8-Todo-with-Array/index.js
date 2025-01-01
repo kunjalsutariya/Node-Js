@@ -54,7 +54,6 @@ app.post('/updateuser', (req, res) => {
     record = up;
     console.log("user successfully update");
     return res.redirect('/');
-    
    
 })
 app.listen(port, (err) => {
