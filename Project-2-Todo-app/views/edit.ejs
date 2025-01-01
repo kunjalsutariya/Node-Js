@@ -1,101 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Task</title>
 
     <style>
-        /* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fc;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-/* Main container styling */
-.container {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-}
+        /* Main container styling */
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
 
-/* Header styling */
-h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #333;
-}
+        /* Header styling */
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-/* Form label and input styling */
-label {
-    font-size: 1em;
-    color: #333;
-    margin: 10px 0 5px;
-    display: block;
-}
+        /* Form label and input styling */
+        label {
+            font-size: 1em;
+            color: #333;
+            margin: 10px 0 5px;
+            display: block;
+        }
 
-input[type="text"],
-input[type="date"],
-select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-}
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
 
-input[type="text"]:focus,
-input[type="date"]:focus,
-select:focus {
-    border-color: #007bff;
-    outline: none;
-}
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
 
-/* Submit button styling */
-input[type="submit"] {
-    background-color: #28a745;
-    border: none;
-    padding: 12px 20px;
-    color: white;
-    font-size: 1.2em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: #28a745;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-input[type="submit"]:hover {
-    background-color: #218838;
-}
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
 
-/* Add task link styling */
-a {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    border-radius: 5px;
-}
+        /* Add task link styling */
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+        }
 
-a:hover {
-    background-color: #0056b3;
-}
-
+        a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Edit Task</h2>
@@ -107,11 +107,11 @@ a:hover {
 
             <label for="status">Status:</label>
             <select id="status" name="status">
-              <option value="todo">To Do</option>
-              <option value="inprogress">In Progress</option>
-              <option value="completed">Completed</option>
+                <option value="todo">To Do</option>
+                <option value="inprogress">In Progress</option>
+                <option value="completed">Completed</option>
             </select>
-        
+
             <label for="userphone">Date:</label>
             <input type="date" id="userphone" name="userphone" value="<%= single.phone %>" required>
 
@@ -120,4 +120,5 @@ a:hover {
         </form>
     </div>
 </body>
+
 </html>
