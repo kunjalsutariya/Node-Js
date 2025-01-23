@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Adjust width as needed */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333; /* Darker text color */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555; /* Slightly darker label color */
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            padding: 12px;
+            border: 1px solid #ddd; 
+            border-radius: 3px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            width: 100%; /* Make inputs full width */
+        }
+
+        input[type="submit"] {
+            background-color: #009688; /* Material Green */
+            color: #fff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00796B; /* Slightly darker on hover */
+        }
+
+        a {
+            color: #009688; /* Match button color */
+            text-decoration: none;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #00796B; /* Slightly darker on hover */
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <h1>Edit Book</h1>
+        <form action="/updateuser" method="post">
+            <input type="hidden" name="id" value="<%= single?.id %>">
+            <div>
+                <label for="bookname">Book Name:</label>
+                <input type="text" id="bookname" name="bookname" value="<%= single?.bookname %>" required>
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required><%= single?.description %></textarea> 
+            </div>
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" value="<%= single?.price %>" required>
+            </div>
+            <div>
+                <label for="authorname">Author Name:</label>
+                <input type="text" id="authorname" name="authorname" value="<%= single?.authorname %>" required>
+            </div>
+            <input type="submit" value="Update Book">
+        </form>
+        <a href="/viewuser">View Books</a>
+    </div>
+</body>
+
+</html>
