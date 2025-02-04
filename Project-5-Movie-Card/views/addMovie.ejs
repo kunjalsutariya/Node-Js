@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <style>
+        body {
+            background-image:url("https://www.marannetwork.com/wp-content/uploads/2021/07/Movice-Poster-Material-psd-file.jpg") ;
+            background-size:cover;
+            background-position:center;
+            background-repeat:no-repeat;
+            background-attachment:fixed;
+            background-blend-mode:overlay;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #bf2e2e;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #5a181fcf;
+        }
+        .view-btn {
+            margin-top: 10px;
+            display: inline-block;
+            color: #432f33;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Movie</h2>
+        <form action="/insertMovie" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Movie Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Ticket Price:</label>
+                <input type="text" id="price" name="price" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Movie Image:</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <a href="/" class="view-btn">View Movies</a>
+    </div>
+</body>
+</html>
