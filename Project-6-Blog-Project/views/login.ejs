@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login User</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>body {
+        background-color: #ffffff; /* Light chocolate background */
+        color: #343a40; /* Dark text color for readability */
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .container {
+        max-width: 350px;
+        margin-top: 120px; /* Adjusted margin for better spacing */
+        padding: 20px;
+    }
+    
+    /* Card Styling */
+    .card {
+        background-color: #f1f1f1; /* Slightly softer background color */
+        color: #343a40;
+        padding: 25px 30px; /* More padding for better spacing */
+        border-radius: 12px; /* Rounded corners for the card */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    
+    /* Form Label */
+    .form-label {
+        color: #343a40;
+        font-weight: 500; /* Softer font weight */
+        margin-bottom: 10px;
+    }
+    
+    /* Form Input Fields */
+    .form-control {
+        background-color: #ffffff;
+        border: 1px solid #BCAAA4;
+        color: #343a40;
+        padding: 12px 15px; /* Comfortable padding for inputs */
+        border-radius: 8px; /* Rounded corners for input fields */
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .form-control:focus {
+        background-color: #fff;
+        color: #343a40;
+        box-shadow: 0 0 5px rgba(141, 110, 99, 0.5); /* Subtle glow on focus */
+        border-color: #8D6E63;
+    }
+    
+    /* Button */
+    .btn {
+        background-color: #343a40;
+        border: none;
+        color: white;
+        padding: 14px 18px;
+        border-radius: 8px; /* Rounded button */
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .btn:hover {
+        background-color: #2c2926; /* Darker shade of the original button */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow on hover */
+        color: white;
+    }
+    
+    /* Register Link */
+    .register-link {
+        display: block;
+        text-align: center;
+        margin-top: 18px; /* Adjusted margin */
+        color: #343a40;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    .register-link:hover {
+        color: #8D6E63; /* Slightly lighter color on hover */
+        text-decoration: underline;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 576px) {
+        .container {
+            max-width: 100%;
+            padding: 15px;
+        }
+    
+        .card {
+            padding: 20px;
+        }
+    
+        .btn {
+            padding: 12px;
+        }
+    
+        .form-control {
+            padding: 10px;
+        }
+    }
+     </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Login User</h2>
+
+        <div class="card">
+            <form action="/loginuser" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="text" name="email" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password:</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn w-100">Login</button>
+            </form>
+        </div>
+
+        <a href="/register" class="register-link">Don't have an account? Register Here</a>
+    </div>
+
+</body>
+</html>
