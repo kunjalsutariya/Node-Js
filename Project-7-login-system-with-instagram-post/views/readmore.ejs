@@ -1,46 +1,28 @@
 <%- include('Header') %>
 
-<section class="py-5" style="background: linear-gradient(135deg, #1e3c72, #2a5298); min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+<section class="py-5 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); min-height: 100vh;">
     <div class="container">
-        <div class="row align-items-center">
-            <!-- Image Section -->
-            <div class="col-lg-6 col-md-6 col-12 mb-4 d-flex justify-content-center">
-                <% if (single && single.image) { %>
-                    <img src="<%= single.image %>" alt="Image" class="rounded shadow-lg" 
-                        style="max-width: 100%; border-radius: 20px; object-fit: cover; height: auto;">
-                <% } else { %>
-                    <p class="text-muted text-center">🚫 No image available</p>
-                <% } %>
-            </div>
-            <!-- Content Section -->
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="p-4 shadow-lg" 
-                    style="border-radius: 20px; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
-                    
-                    <h2 class="mb-3 text-white" style="font-size: 2rem;">
-                        <strong>📝 Title:</strong> <%= single.title ? single.title : "No Title Available" %>
-                    </h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12">
+                <div class="card custom-card shadow-lg">
+                    <div class="card-body text-center">
+                        <!-- Image Section -->
+                        <% if (single && single.image) { %>
+                            <img src="<%= single.image %>" alt="Blog Image" class="blog-image">
+                        <% } else { %>
+                            <p class="text-muted">🚫 No image available</p>
+                        <% } %>
 
-                    <p class="text-white mb-4" style="font-size: 1.2rem;">
-                        <strong>📖 Description:</strong> <%= single.description ? single.description : "No Description Available" %>
-                    </p>
+                        <!-- Content -->
+                        <h2 class="blog-title">📝 <%= single.title ? single.title : "No Title Available" %></h2>
+                        <p class="blog-desc"><strong>📖 Description:</strong> <%= single.description ? single.description : "No Description Available" %></p>
+                        <h5 class="blog-author">👤 <strong>Author:</strong> <%= single.author ? single.author : "Unknown Author" %></h5>
 
-                    <h5 class="mb-4 text-white" style="font-size: 1rem;">
-                        <strong>👤 Author:</strong> <%= single.author ? single.author : "Unknown Author" %>
-                    </h5>
-
-                    <!-- Buttons Section -->
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="/editBlog?editId=<%= single._id %>" 
-                            class="btn shadow"
-                            style="padding: 15px 40px; font-size: 1rem; font-weight: 600; background: linear-gradient(135deg, #4facfe, #00f2fe); border: none; color: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);">
-                            ✏️ Edit
-                        </a>
-                        <a href="/deleteBlog?deletId=<%= single._id %>" 
-                            class="btn shadow"
-                            style="padding: 15px 40px; font-size: 1rem; font-weight: 600; background: linear-gradient(135deg, #ff758c, #ff7eb3); border: none; color: white; border-radius: 12px; box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);">
-                            🗑️ Delete
-                        </a>
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-center mt-3">
+                            <a href="/editBlog?editId=<%= single._id %>" class="btn custom-btn shadow">✏️ Edit</a>
+                            <a href="/deleteBlog?deletId=<%= single._id %>" class="btn custom-btn-delete shadow">🗑️ Delete</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,65 +35,93 @@
 <style>
 /* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fff;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f2027;
+    color: #ffffff;
 }
 
-h1, h5 {
+/* Custom Card */
+.custom-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.custom-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Blog Image */
+.blog-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Blog Title */
+.blog-title {
+    font-size: 1.8rem;
     font-weight: bold;
+    margin-top: 20px;
+    color: #ffffff;
 }
 
-p {
-    line-height: 1.6;
+/* Blog Description */
+.blog-desc {
+    font-size: 1.2rem;
+    color: #ffffff;
 }
 
-/* Button Hover Effects */
-.btn-primary:hover {
-    background-color: #004085;
-    color: #fff;
+/* Blog Author */
+.blog-author {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ddd;
 }
 
-.btn-danger:hover {
-    background-color: #c9302c;
-    color: #fff;
+/* Buttons */
+.custom-btn, .custom-btn-delete {
+    padding: 12px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s;
+    margin: 0 10px;
 }
 
-.btn-secondary:hover {
-    cursor: not-allowed;
+.custom-btn {
+    background: linear-gradient(135deg, #38ef7d, #11998e);
+    color: white;
+}
+
+.custom-btn-delete {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    color: white;
+}
+
+.custom-btn:hover, .custom-btn-delete:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .row {
-        flex-direction: column;
-        align-items: center;
-        text-align: left;
+    .blog-title {
+        font-size: 1.5rem;
     }
 
-    .col-12 {
-        width: 100%;
-        padding: 0 15px; /* Add padding to ensure content is not flush with edges */
+    .blog-desc {
+        font-size: 1rem;
     }
 
-    .btns {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-    }
-
-    .btns a {
-        margin-bottom: 10px;
-        width: 100%; /* Buttons span the full width */
-    }
-
-    img {
-        max-width: 100%; /* Ensure images scale properly */
-        height: auto;
-    }
-
-    h2, p, h5 {
-        text-align: left;
+    .custom-btn, .custom-btn-delete {
+        padding: 10px 25px;
+        font-size: 0.9rem;
     }
 }
 </style>

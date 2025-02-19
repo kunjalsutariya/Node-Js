@@ -7,67 +7,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-      <title>Blogs</title>
+    <title>Blogs</title>
     <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
-    <!-- Ensure MDI icons are loaded -->
     <link href="./dist/css/style.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #222831, #393E46);
+            color: #EEEEEE;
+            margin: 0;
+            padding: 0;
+        }
+        .topbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 2rem;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar a {
+            color: #FFD369;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            background: rgba(255, 211, 105, 0.2);
+        }
+        .btn-logout {
+            background: linear-gradient(135deg, #FF512F, #DD2476);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-logout:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
-        </div>
-    </div>
     <div id="main-wrapper">
-        <header class="topbar container-fluid" data-navbarbg="skin5" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 0;">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav float-left mr-auto">
-                        <li class="" style="margin-bottom: 1rem;margin-right: 10px;margin-left: 5px;">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard" aria-expanded="false" style="display: flex; align-items: center; padding: 10px; border-radius: 12px; transition: background 0.3s; margin-top: 13px; background: rgba(255, 255, 255, 0.1);">
-                                <i class="mdi mdi-view-dashboard" style="font-size: 1.2rem; margin-right: 10px;color: white;"></i>
-                                <span class="hide-menu" style="color: white;"> Dashboard </span>
-                            </a>
-                        </li>
-                        <li class="" style="margin-bottom: 1rem;">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add" aria-expanded="false" style="display: flex; align-items: center; padding: 10px; border-radius: 12px; transition: background 0.3s; margin-top: 13px; background: rgba(255, 255, 255, 0.1);">
-                                <i class="mdi mdi-plus-box" style="font-size: 1.2rem; margin-right: 10px;color: white;"></i>
-                                <span class="hide-menu" style="color: white;"> Add Blogs</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div>
-                        <form action="/logout" method="POST" style="display: inline;">
-                            <button type="submit" class="btn w-100 text-light" style="background: linear-gradient(135deg, #ff7eb3, #ff758c); border-radius: 12px; padding: 12px; font-weight: bold; box-shadow: 0 4px 10px rgba(255, 117, 140, 0.3);">Logout</button>
-                        </form>
-                    </div>
+        <header class="topbar container-fluid">
+            <nav class="navbar">
+                <div class="nav-links">
+                    <a href="/dashboard">
+                        <i class="mdi mdi-view-dashboard"></i> Dashboard
+                    </a>
+                    <a href="/add">
+                        <i class="mdi mdi-plus-box"></i> Add Blogs
+                    </a>
                 </div>
+                <form action="/logout" method="POST">
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
             </nav>
         </header>
-        
-        
-     <style>
-        .navbar {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-.topbar {
-    width: 100%;
-}
-.navbar {
-    width: 100%;
-}
-.navbar-collapse {
-    width: 100%;
-}
+    </div>
+</body>
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-     </style>
-        
+</html>
