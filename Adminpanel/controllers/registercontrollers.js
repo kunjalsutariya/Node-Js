@@ -77,19 +77,18 @@ const resetpassword = async (req, res) => {
         let transpoter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'nikunjnavadiya7@gmail.com',
-                pass: 'wsje dbyy gozb tsxs'
+                user: 'dsutariya0007@gmail.com',
+                pass: 'nigj xbyr dyan qohw'
             }
         })
 
         let mailemail = {
-            from: 'shreyaitaliya11@gmail.com',
+            from: 'dsutariya0007@gmail.com',
             to: email,
             subject: "your Otp",
             html: `<h4>Please enter the following code on the page where you dropped your resume: </h4>
                    <h1>${otp} </h1>
-                   <p>This verification code will only be valid for the next 10 minutes.</p>
-                   <p>If you didn’t sign up on Cutshort, Please ignore this message.</p>`
+                  `
         }
 
         transpoter.sendMail(mailemail, function (error, info) {
