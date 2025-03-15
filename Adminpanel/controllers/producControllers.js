@@ -147,6 +147,7 @@ const categoryOutstock = async (req, res) => {
     }
 }
 
+
 module.exports = ({
     formproduct, tableproduct, productadd, deleteproductrecord, editpeoductRecord, updateproduct, categoryOutstock, categoryInstock
 })
