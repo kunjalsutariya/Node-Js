@@ -49,7 +49,11 @@
                                                     <%= subcate.categoryId.category %>
                                                 </td>
                                                 <td>
-                                                    <%= subcate.subcategoryId.subcategory %>
+                                                    <% if (subcate.subcategoryId) { %>
+                                                        <%= subcate.subcategoryId.subcategory %>
+                                                    <% } else { %>
+                                                        No Subcategory
+                                                    <% } %>
                                                 </td>
                                                 <td>
                                                     <%= subcate.excategory %>
