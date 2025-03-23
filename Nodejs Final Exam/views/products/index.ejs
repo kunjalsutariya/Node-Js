@@ -1,0 +1,154 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <div class="products-header">
+        <h2>Explore Our Collection</h2>
+        <a href="/products/create" class="btn-primary">
+            <i class="fas fa-plus"></i> Add Product
+        </a>
+    </div>
+
+    <div class="filters">
+        <form action="/products" method="GET">
+            <select name="category" onchange="this.form.submit()">
+                <option value="">All Categories</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Books">shoes</option>
+                <option value="Sports">Sports</option>
+            </select>
+        </form>
+    </div>
+
+    <div class="product-grid">
+        <% if (products && products.length > 0) { %>
+            <% products.forEach(function(product) { %>
+                <div class="product-card">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                    <div class="product-details">
+                        <h3><%= product.name %></h3>
+                        <p class="category"><%= product.category %></p>
+                        <p class="description"><%= product.description %></p>
+                        <div class="price-stock">
+                            <span class="price">$<%= product.price %></span>
+                            <span class="stock">Stock: <%= product.qty %></span>
+                        </div>
+                        <div class="actions">
+                            <a href="/products/<%= product._id %>/edit" class="edit-btn">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure?')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <form action="/cart/add" method="POST" class="cart-form">
+                            <input type="hidden" name="productId" value="<%= product._id %>">
+                            <button type="submit" class="add-to-cart">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="no-products">No products available.</p>
+        <% } %>
+    </div>
+</div>
+
+<style>
+    :root {
+        --primary-color: #ff6b6b;
+        --secondary-color: #4ecdc4;
+        --background-color: #f7f9fc;
+        --text-color: #333;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+    }
+    .products-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+        background: var(--primary-color);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .filters select {
+        padding: 0.7rem;
+        border-radius: 8px;
+        border: 2px solid var(--secondary-color);
+        background: white;
+        color: var(--text-color);
+    }
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+    .product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    .product-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+    .product-details {
+        padding: 1.2rem;
+    }
+    .price-stock {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+    .actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .edit-btn, .delete-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    .add-to-cart {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .add-to-cart:hover {
+        background: #3fb5aa;
+    }
+    .no-products {
+        text-align: center;
+        font-size: 1.2rem;
+        color: gray;
+    }
+</style>
+
+<%- include('../partials/footer') %>

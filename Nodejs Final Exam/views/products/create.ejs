@@ -1,0 +1,174 @@
+<%- include('../partials/header') %>
+
+<div class="product-form-container">
+    <div class="form-wrapper">
+        <div class="form-header">
+            <h2>Add New Product</h2>
+            <p class="subtitle">Create a new product listing</p>
+        </div>
+
+        <form action="/products" method="POST" enctype="multipart/form-data" class="product-form">
+            <div class="form-grid">
+                <div class="input-group">
+                    <div class="form-field">
+                        <input type="text" id="name" name="name" required placeholder="Product Name">
+                    </div>
+                    <div class="form-field">
+                        <input type="number" id="price" name="price" step="0.01" required placeholder="Price ($)">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="form-field">
+                        <input type="number" id="qty" name="qty" required placeholder="Quantity">
+                    </div>
+                    <div class="form-field">
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Books">Books</option>
+                            <option value="Home & Garden">Home & Garden</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-field full-width">
+                    <textarea id="description" name="description" required placeholder="Product Description"></textarea>
+                </div>
+                <div class="image-upload-container">
+                    <div class="image-upload-area" id="dropZone">
+                        <p>Drag & Drop or <label for="image" class="upload-btn">Choose File</label></p>
+                        <input type="file" id="image" name="image" accept="image/*" required>
+                    </div>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+                <button type="submit" class="submit-btn">Add Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    .product-form-container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eef2f7;
+        padding: 2rem;
+    }
+    .form-wrapper {
+        width: 100%;
+        max-width: 700px;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .form-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    .form-header h2 {
+        color: #333;
+        font-size: 24px;
+    }
+    .subtitle {
+        color: #666;
+        font-size: 14px;
+    }
+    .form-grid {
+        display: grid;
+        gap: 1rem;
+    }
+    .input-group {
+        display: flex;
+        gap: 1rem;
+    }
+    .form-field {
+        flex: 1;
+    }
+    .form-field input, .form-field select, .form-field textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: border 0.3s;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+        border-color: #4a90e2;
+    }
+    .full-width {
+        grid-column: 1 / -1;
+    }
+    .image-upload-container {
+        grid-column: 1 / -1;
+    }
+    .image-upload-area {
+        border: 2px dashed #4a90e2;
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+    }
+    .upload-btn {
+        color: #4a90e2;
+        cursor: pointer;
+    }
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    .submit-btn:hover {
+        background: #3578e5;
+    }
+    @media (max-width: 768px) {
+        .input-group {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<script>
+    const imageInput = document.getElementById('image');
+    const imagePreview = document.getElementById('imagePreview');
+    const dropZone = document.getElementById('dropZone');
+
+    imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.innerHTML = `<img src="${e.target.result}" style="max-width: 100px; border-radius: 6px;">`;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            imageInput.files = e.dataTransfer.files;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.innerHTML = `<img src="${e.target.result}" style="max-width: 100px; border-radius: 6px;">`;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
+<%- include('../partials/footer') %>

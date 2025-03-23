@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Books</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333; /* Darker text color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f2f2f2; /* Lighter background for headers */
+            color: #333; /* Darker text color for headers */
+            font-weight: bold;
+        }
+
+        table tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9; /* Lighter background for even rows */
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .actions {
+            display: flex;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #009688; /* Match button color */
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .actions a:hover {
+            background-color: #f1f1f1;
+        }
+
+        a[href="/"] {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #009688; /* Match button color */
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a[href="/"]:hover {
+            background-color: #009688; /* Slightly darker on hover */
+        }
+    </style>
+
+<body>
+    <div class="container">
+        <h1>View Books</h1>
+        <table>
+            <tr>
+                <th>Book Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Author</th>
+                <th>Action</th>
+            </tr>
+            <% viewUser.map ((val,index)=> { %>
+            <tr>
+                <td><%= val.bookname %></td>
+                <td><%= val.description %></td>
+                <td><%= val.price %></td>
+                <td><%= val.authorname %></td>
+                <td class="actions">
+                    <a href=" deleteuser?did=<%= val?.id %>">Delete</a>
+                    <a href=" edituser?eid=<%= val?.id %>">Edit</a>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+        <a href="/">Add Book</a>
+    </div>
+</body>
+
+</html>
